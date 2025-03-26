@@ -19,10 +19,10 @@ func init() {
 		log.Fatalf("Failed to initialize syslog: %v", err)
 	}
 
-	debugLogger = log.New(sysLogger, "DEBUG: ", log.LstdFlags)
-	infoLogger = log.New(sysLogger, "INFO: ", log.LstdFlags)
-	warnLogger = log.New(sysLogger, "WARN: ", log.LstdFlags)
-	errorLogger = log.New(sysLogger, "ERROR: ", log.LstdFlags)
+	debugLogger = log.New(sysLogger, "", log.Lmsgprefix)
+	infoLogger = log.New(sysLogger, "", log.Lmsgprefix)
+	warnLogger = log.New(sysLogger, "", log.Lmsgprefix)
+	errorLogger = log.New(sysLogger, "", log.Lmsgprefix)
 }
 
 // Debug 级别日志
