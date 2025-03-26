@@ -11,6 +11,7 @@ import (
 )
 
 func main() {
+	logger.Info("snmp agentx service start.")
 	client, err := agentx.Dial("unix", "/var/run/agentx.sock")
 	if err != nil {
 		logger.Error(err.Error())
