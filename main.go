@@ -1,26 +1,26 @@
 package main
 
 import (
-	"log"
 	"net"
 	"time"
 
 	"go-snmp-agentx/agentx"
 	"go-snmp-agentx/agentx/pdu"
 	"go-snmp-agentx/agentx/value"
+	"go-snmp-agentx/logger"
 )
 
 func main() {
-	client, err := agentx.Dial("tcp", "localhost:705")
+	client, err := agentx.Dial("unix", "/var/run/agentx.sock")
 	if err != nil {
-		log.Fatalf(err.Error())
+		logger.Error(err.Error())
 	}
 	client.Timeout = 1 * time.Minute
 	client.ReconnectInterval = 1 * time.Second
 
 	session, err := client.Session()
 	if err != nil {
-		log.Fatalf(err.Error())
+		logger.Error(err.Error())
 	}
 
 	listHandler := &agentx.ListHandler{}
@@ -68,7 +68,7 @@ func main() {
 	session.Handler = listHandler
 
 	if err := session.Register(127, value.MustParseOID("1.3.6.1.4.1.45995.3")); err != nil {
-		log.Fatalf(err.Error())
+		logger.Error(err.Error())
 	}
 
 	for {
