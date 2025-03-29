@@ -1,18 +1,22 @@
 package sysinfo
 
 import (
-	"fmt"
-
 	"github.com/shirou/gopsutil/host"
+
+	"go-snmp-agentx/util"
 )
 
-func SensorsTemperatures () {
+func SensorsTemperatures() string {
+	var result = make(map[string]interface{})
+
 	sensors, err := host.SensorsTemperatures()
 	if err != nil {
-		return
+		return ""
 	}
 
 	for _, sensor := range sensors {
-		fmt.Printf("传感器: %s, 温度: %.2f°C\n", sensor.SensorKey, sensor.Temperature)
+		result[sensor.SensorKey] = sensor.Temperature
 	}
+
+	return util.Map2JSON(result)
 }

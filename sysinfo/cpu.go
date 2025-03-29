@@ -2,14 +2,29 @@ package sysinfo
 
 import (
 	"github.com/shirou/gopsutil/cpu"
+
+	"go-snmp-agentx/util"
 )
 
-func CPUStat() float64 {
+// CPUStat 获取 CPU 使用率
+func CPUStat() string {
+	var stat = make(map[string]interface{})
+
 	// 获取 CPU 使用率
-	percent, err := cpu.Percent(0, false)
+	percent, err := cpu.Percent(0, true)
 	if err != nil {
-		return 0
+		return ""
 	}
 
-	return  percent[0]
+	var sum float64
+	for i, p := range percent {
+		sum += p
+		stat["cpu"+string(i)] = p
+	}
+
+	// 计算平均值
+	stat["cpu"] = sum / float64(len(percent))
+
+	// 将 map 转换为 json 字符串
+	return util.Map2JSON(stat)
 }
