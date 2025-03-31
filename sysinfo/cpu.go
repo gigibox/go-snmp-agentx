@@ -1,7 +1,9 @@
 package sysinfo
 
 import (
+	"fmt"
 	"github.com/shirou/gopsutil/cpu"
+	"time"
 
 	"go-snmp-agentx/util"
 )
@@ -11,7 +13,7 @@ func CPUStat() string {
 	var stat = make(map[string]interface{})
 
 	// 获取 CPU 使用率
-	percent, err := cpu.Percent(0, true)
+	percent, err := cpu.Percent(time.Second, true)
 	if err != nil {
 		return ""
 	}
@@ -19,7 +21,8 @@ func CPUStat() string {
 	var sum float64
 	for i, p := range percent {
 		sum += p
-		stat["cpu"+string(i)] = p
+		key := fmt.Sprintf("cpu%d", i)
+		stat[key] = p
 	}
 
 	// 计算平均值
