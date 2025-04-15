@@ -2,14 +2,15 @@ package sysinfo
 
 import (
 	"fmt"
-	"github.com/shirou/gopsutil/cpu"
 	"time"
+
+	"github.com/shirou/gopsutil/cpu"
 
 	"go-snmp-agentx/util"
 )
 
 // CPUStat 获取 CPU 使用率
-func CPUStat() string {
+func CPUStat() interface{} {
 	var stat = make(map[string]interface{})
 
 	// 获取 CPU 使用率

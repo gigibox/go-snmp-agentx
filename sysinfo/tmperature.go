@@ -6,7 +6,7 @@ import (
 	"go-snmp-agentx/util"
 )
 
-func SensorsTemperatures() string {
+func SensorsTemperatures() interface{} {
 	var result = make(map[string]interface{})
 
 	sensors, err := host.SensorsTemperatures()

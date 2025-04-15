@@ -9,5 +9,5 @@ import "go-snmp-agentx/agentx/pdu"
 // ListItem defines an item of the list handler.
 type ListItem struct {
 	Type  pdu.VariableType
-	Value interface{}
+	Value func() interface{}
 }

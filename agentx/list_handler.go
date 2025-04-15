@@ -40,7 +40,7 @@ func (l *ListHandler) Get(oid value.OID) (value.OID, pdu.VariableType, interface
 
 	item, ok := l.items[oid.String()]
 	if ok {
-		return oid, item.Type, item.Value, nil
+		return oid, item.Type, item.Value(), nil
 	}
 	return nil, pdu.VariableTypeNoSuchObject, nil, nil
 }

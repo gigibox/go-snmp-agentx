@@ -6,7 +6,7 @@ import (
 	"go-snmp-agentx/util"
 )
 
-func WirelessStat() string {
+func WirelessStat() interface{} {
 	data, err := util.RunUbusCommand("call", "network.wireless", "status")
 	if err != nil {
 		return ""

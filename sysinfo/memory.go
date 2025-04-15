@@ -10,7 +10,7 @@ import (
 )
 
 // MemoryStat 获取内存使用率
-func MemoryStat() string {
+func MemoryStat() interface{} {
 	var result = make(map[string]interface{})
 
 	// 获取内存信息
