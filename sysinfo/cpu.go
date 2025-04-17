@@ -23,11 +23,11 @@ func CPUStat() interface{} {
 	for i, p := range percent {
 		sum += p
 		key := fmt.Sprintf("cpu%d", i)
-		stat[key] = p
+		stat[key] = util.RoundFloat(p, 2)
 	}
 
 	// 计算平均值
-	stat["cpu"] = sum / float64(len(percent))
+	stat["cpu"] = util.RoundFloat(sum/float64(len(percent)), 2)
 
 	// 将 map 转换为 json 字符串
 	return util.Map2JSON(stat)

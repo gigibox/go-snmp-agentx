@@ -41,9 +41,10 @@ func main() {
 		}
 
 		session.Handler = oids.InitOidHandler()
-		if err := session.Register(127, value.MustParseOID("1.3.6.1.4.1.45995.3")); err != nil {
+		if err := session.Register(127, value.MustParseOID(oids.StatOidGroup)); err != nil {
 			logger.Error(err.Error())
 			session.Close()
+
 			time.Sleep(retryInterval * time.Second)
 
 			continue
