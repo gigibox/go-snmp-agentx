@@ -11,7 +11,7 @@ func SensorsTemperatures() interface{} {
 
 	sensors, err := host.SensorsTemperatures()
 	if err != nil {
-		return ""
+		return "{}"
 	}
 
 	for _, sensor := range sensors {

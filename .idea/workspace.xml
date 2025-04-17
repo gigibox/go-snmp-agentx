@@ -7,10 +7,9 @@
     <list default="true" id="beb2c434-1629-4b9f-8c4c-4e6af4d2fd56" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oids/handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/oids/handler.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/oids/oids.go" beforeDir="false" afterPath="$PROJECT_DIR$/oids/oids.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sysinfo/cpu.go" beforeDir="false" afterPath="$PROJECT_DIR$/sysinfo/cpu.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/util.go" beforeDir="false" afterPath="$PROJECT_DIR$/util/util.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sysinfo/tmperature.go" beforeDir="false" afterPath="$PROJECT_DIR$/sysinfo/tmperature.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trap/trap.go" beforeDir="false" afterPath="$PROJECT_DIR$/trap/client.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

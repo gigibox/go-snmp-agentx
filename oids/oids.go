@@ -13,6 +13,7 @@ const (
 	StatWirelessStatus      = "1.3.6.1.4.1.5688.0.9" // 无线网络状态
 
 	// Trap OIDs
+	TrampExampleMessage        = "1.3.7.1.2.1.1.0.0"  // 测试程序
 	Trap5GHardwareFailure      = "1.3.7.1.2.1.1.1.0"  // 5G模组硬件故障
 	Trap5GNotPresent           = "1.3.7.1.2.1.1.2.0"  // 5G模组不在位告警
 	TrapWiFiHardwareFailure    = "1.3.7.1.2.1.1.3.0"  // WIFI模组硬件故障告警
