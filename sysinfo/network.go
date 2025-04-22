@@ -2,6 +2,7 @@ package sysinfo
 
 import (
 	"encoding/json"
+	"os/exec"
 	"time"
 
 	"go-snmp-agentx/util"
@@ -66,5 +67,7 @@ func TrafficStatistics() interface{} {
 }
 
 func SMSSignal() interface{} {
-	return "{}"
+	cmd := exec.Command("sh", "/usr/share/3ginfo-lite/modeminfo.sh")
+	output, _ := cmd.CombinedOutput()
+	return string(output)
 }

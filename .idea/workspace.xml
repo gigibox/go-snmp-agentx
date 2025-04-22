@@ -6,10 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="beb2c434-1629-4b9f-8c4c-4e6af4d2fd56" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oids/oids.go" beforeDir="false" afterPath="$PROJECT_DIR$/oids/oids.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sysinfo/tmperature.go" beforeDir="false" afterPath="$PROJECT_DIR$/sysinfo/tmperature.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trap/trap.go" beforeDir="false" afterPath="$PROJECT_DIR$/trap/client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sysinfo/network.go" beforeDir="false" afterPath="$PROJECT_DIR$/sysinfo/network.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trap/client.go" beforeDir="false" afterPath="$PROJECT_DIR$/trap/client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trap/example.go" beforeDir="false" afterPath="$PROJECT_DIR$/trap/example.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trap/module.go" beforeDir="false" afterPath="$PROJECT_DIR$/trap/module.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trap/task.go" beforeDir="false" afterPath="$PROJECT_DIR$/trap/task.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,23 +57,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultGoTemplateProperty": "Go File",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
-    "git-widget-placeholder": "master",
-    "go.import.settings.migrated": "true",
-    "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "C:/Users/Administrator",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "watcher.settings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Administrator&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;watcher.settings&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="go build go-snmp-agentx" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
       <module name="go-snmp-agentx" />

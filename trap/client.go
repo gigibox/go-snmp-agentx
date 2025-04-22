@@ -24,8 +24,35 @@ func Init(targetIP, communityName string, port int) {
 	}
 }
 
-func Send(msgMap map[string]string) {
+func Send(pdus []gosnmp.SnmpPDU) {
+	// 配置SNMP参数
+	snmp := &gosnmp.GoSNMP{
+		Target:    serverAddr,
+		Port:      uint16(serverPort),
+		Version:   gosnmp.Version2c,
+		Community: community,
+		Timeout:   time.Duration(3) * time.Second,
+	}
 
+	// 连接到SNMP代理
+	err := snmp.Connect()
+	if err != nil {
+		log.Fatalf("连接失败: %s", err.Error())
+	}
+	defer snmp.Conn.Close()
+
+	// 创建SnmpTrap结构体
+	trap := gosnmp.SnmpTrap{
+		Variables: pdus,
+	}
+
+	_, err = snmp.SendTrap(trap)
+	if err != nil {
+		log.Fatalf("发送Trap失败: %s", err.Error())
+	}
+}
+
+func SendMap(msgMap map[string]string) {
 	// 配置SNMP参数
 	snmp := &gosnmp.GoSNMP{
 		Target:    serverAddr,

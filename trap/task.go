@@ -3,6 +3,8 @@ package trap
 import (
 	"time"
 
+	"github.com/gosnmp/gosnmp"
+
 	"go-snmp-agentx/logger"
 )
 
@@ -12,18 +14,17 @@ func SystemMonitorLoop(interval int) {
 	}
 
 	for {
-		sendList := make(map[string]string)
+		var sendList = make([]gosnmp.SnmpPDU, 0)
+
 		for _, m := range moduleList {
-			msg, err := m.Check()
+			pdu, err := m.Check()
 			if err != nil {
 				logger.Warn("Check %s error: %s", m.Name(), err.Error())
 				continue
 			}
 
-			if msg != "" {
-				logger.Warn("Check %s: %s", m.Name(), msg)
-
-				sendList[m.OID()] = msg
+			if pdu != nil {
+				sendList = append(sendList, pdu...)
 			}
 		}
 

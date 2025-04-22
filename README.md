@@ -7,6 +7,9 @@ This project is an SNMP AgentX subagent implemented in Golang. It extends an SNM
 ```azure
 # MT7621
 GOOS=linux GOARCH=mipsle GOMIPS=softfloat CGO_ENABLED=0 go build -ldflags="-s -w"
+
+# 7981
+GOOS=linux GOARCH=arm64 go build -ldflags="-s -w"
 ```
 ## Project
 The implementation was provided by [posteo/go-agentx)](https://github.com/posteo/go-agentx)

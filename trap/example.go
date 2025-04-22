@@ -1,6 +1,10 @@
 package trap
 
-import "go-snmp-agentx/oids"
+import (
+	"github.com/gosnmp/gosnmp"
+
+	"go-snmp-agentx/oids"
+)
 
 type ExampleModule struct {
 }
@@ -9,10 +13,14 @@ func (e *ExampleModule) Name() string {
 	return "ExampleModule"
 }
 
-func (e *ExampleModule) OID() string {
-	return oids.TrampExampleMessage
-}
+func (e *ExampleModule) Check() ([]gosnmp.SnmpPDU, error) {
+	pdu := []gosnmp.SnmpPDU{
+		{
+			Name:  oids.TrampExampleMessage,
+			Type:  gosnmp.OctetString,
+			Value: "Test trap message",
+		},
+	}
 
-func (e *ExampleModule) Check() (string, error) {
-	return "Test trap message.", nil
+	return pdu, nil
 }

@@ -33,7 +33,6 @@ func main() {
 		trap.Init(trapServer, community, trapPort)
 		go trap.SystemMonitorLoop(trapInterval)
 		logger.Info("trap server: %s, port: %d, community:%s, interval: %d", trapServer, trapPort, community, trapInterval)
-
 	}
 
 	var client = new(agentx.Client)
