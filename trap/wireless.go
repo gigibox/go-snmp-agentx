@@ -39,7 +39,7 @@ func (w *WirelessModule) Check() ([]gosnmp.SnmpPDU, error) {
 	}
 
 	pdu = append(pdu, gosnmp.SnmpPDU{
-		Value: `{"msg": "Wireless device not found"}`,
+		Value: `{"id":30103, "msg": "Wireless device not found"}`,
 		Name:  oids.TrapWiFiHardwareFailure,
 		Type:  gosnmp.OctetString,
 	})

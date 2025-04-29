@@ -2,6 +2,7 @@ package trap
 
 import (
 	"encoding/json"
+	"fmt"
 	"os/exec"
 
 	"github.com/gosnmp/gosnmp"
@@ -14,6 +15,7 @@ type SMSDeviceMonitorModule struct {
 	ChipTemp float64 `json:"chip_temp"`
 	Modem    string  `json:"modem"`
 	Signal   float64 `json:"signal"`
+	RSRP     float64 `json:"rsrp"`
 }
 
 func (s *SMSDeviceMonitorModule) Name() string {
@@ -29,38 +31,38 @@ func (s *SMSDeviceMonitorModule) Check() ([]gosnmp.SnmpPDU, error) {
 
 	if s.Device == "" {
 		pdu = append(pdu, gosnmp.SnmpPDU{
-			Value: `{"msg": "5G device not found"}`,
+			Value: `{"id":30102, "msg": "5G module not found"}`,
 			Name:  oids.Trap5GNotPresent,
 			Type:  gosnmp.OctetString,
 		})
 	} else {
 		if s.Modem == "" {
 			pdu = append(pdu, gosnmp.SnmpPDU{
-				Value: output,
+				Value: `{"id":30101, "msg": "5G module hardware failure"}`,
 				Name:  oids.Trap5GHardwareFailure,
 				Type:  gosnmp.OctetString,
 			})
 		}
 
-		if s.Signal < 20 {
+		if s.RSRP < -95 {
 			pdu = append(pdu, gosnmp.SnmpPDU{
 				Value: output,
-				Name:  oids.Trap5GSignalTooWeak,
+				Name:  fmt.Sprintf(`{"id":40101, "msg": "5G Signal too weak. rsrp %f dBm"}`, s.RSRP),
 				Type:  gosnmp.OctetString,
 			})
 		}
 
-		if s.ChipTemp > 70 {
+		if s.ChipTemp >= 75 {
 			pdu = append(pdu, gosnmp.SnmpPDU{
-				Value: output,
+				Value: fmt.Sprintf(`{"id":50103, "msg": "5G module temperature too high. %f ℃"}`, s.ChipTemp),
 				Name:  oids.Trap5GHighTemp,
 				Type:  0,
 			})
 		}
 
-		if s.ChipTemp < 10 {
+		if s.ChipTemp <= 35 {
 			pdu = append(pdu, gosnmp.SnmpPDU{
-				Value: output,
+				Value: fmt.Sprintf(`{"id":50104, "msg": "5G module temperature too low. %f ℃"}`, s.ChipTemp),
 				Name:  oids.Trap5GLowTemp,
 				Type:  0,
 			})

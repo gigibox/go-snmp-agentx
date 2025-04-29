@@ -6,13 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="beb2c434-1629-4b9f-8c4c-4e6af4d2fd56" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sysinfo/network.go" beforeDir="false" afterPath="$PROJECT_DIR$/sysinfo/network.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trap/client.go" beforeDir="false" afterPath="$PROJECT_DIR$/trap/client.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trap/example.go" beforeDir="false" afterPath="$PROJECT_DIR$/trap/example.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trap/module.go" beforeDir="false" afterPath="$PROJECT_DIR$/trap/module.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trap/task.go" beforeDir="false" afterPath="$PROJECT_DIR$/trap/task.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trap/cpuMonitor.go" beforeDir="false" afterPath="$PROJECT_DIR$/trap/cpuMonitor.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trap/disk.go" beforeDir="false" afterPath="$PROJECT_DIR$/trap/disk.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trap/smsDevice.go" beforeDir="false" afterPath="$PROJECT_DIR$/trap/smsDevice.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trap/wireless.go" beforeDir="false" afterPath="$PROJECT_DIR$/trap/wireless.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

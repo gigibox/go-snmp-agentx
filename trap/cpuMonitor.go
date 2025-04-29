@@ -27,15 +27,15 @@ func (c *CpuMonitorModule) Check() ([]gosnmp.SnmpPDU, error) {
 
 	for _, sensor := range sensors {
 		if strings.Contains(sensor.SensorKey, "cpu") {
-			if sensor.Temperature > 70 {
+			if sensor.Temperature >= 60 {
 				pdu = append(pdu, gosnmp.SnmpPDU{
-					Value: fmt.Sprintf(`{"msg": "CPU temperature is too high, current temperature is %v"}`, sensor.Temperature),
+					Value: fmt.Sprintf(`{"id":50101, "msg": "CPU temperature is too high, current temperature is %v"}`, sensor.Temperature),
 					Name:  oids.TrapCpuHighTemp,
 					Type:  gosnmp.OctetString,
 				})
-			} else if sensor.Temperature < 20 {
+			} else if sensor.Temperature <= 18 {
 				pdu = append(pdu, gosnmp.SnmpPDU{
-					Value: fmt.Sprintf(`{"msg": "CPU temperature is too low, current temperature is %v"}`, sensor.Temperature),
+					Value: fmt.Sprintf(`{"id":50102, "msg": "CPU temperature is too low, current temperature is %v"}`, sensor.Temperature),
 					Name:  oids.TrapCpuLowTemp,
 					Type:  gosnmp.OctetString,
 				})
