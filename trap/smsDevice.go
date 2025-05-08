@@ -46,8 +46,8 @@ func (s *SMSDeviceMonitorModule) Check() ([]gosnmp.SnmpPDU, error) {
 
 		if s.RSRP < -95 {
 			pdu = append(pdu, gosnmp.SnmpPDU{
-				Value: output,
-				Name:  fmt.Sprintf(`{"id":40101, "msg": "5G Signal too weak. rsrp %f dBm"}`, s.RSRP),
+				Value: fmt.Sprintf(`{"id":40101, "msg": "5G Signal too weak. rsrp %f dBm"}`, s.RSRP),
+				Name:  oids.Trap5GSignalTooWeak,
 				Type:  gosnmp.OctetString,
 			})
 		}
