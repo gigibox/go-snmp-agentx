@@ -32,7 +32,7 @@ func main() {
 
 	if trapServer != "" {
 		trap.Init(trapServer, community, trapPort)
-		go trap.SystemMonitorLoop(trapInterval)
+		go trap.SystemMonitorLoop(checkInterval, trapInterval)
 		logger.Info("trap server: %s, port: %d, community:%s, interval: %d", trapServer, trapPort, community, trapInterval)
 	}
 
