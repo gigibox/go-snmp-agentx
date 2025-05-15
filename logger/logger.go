@@ -5,6 +5,14 @@ import (
 	"log/syslog"
 )
 
+// 日志级别常量
+const (
+	DebugLevel = iota
+	InfoLevel
+	WarnLevel
+	ErrorLevel
+)
+
 var (
 	debugLogger *log.Logger
 	infoLogger  *log.Logger
@@ -14,15 +22,18 @@ var (
 
 // 初始化 syslog
 func init() {
-	sysLogger, err := syslog.New(syslog.LOG_INFO|syslog.LOG_DAEMON, "snmp_agentx")
+	debugWriter, err := syslog.New(syslog.LOG_DEBUG|syslog.LOG_DAEMON, "snmp_agentx")
 	if err != nil {
-		log.Fatalf("Failed to initialize syslog: %v", err)
+		return
 	}
+	infoWriter, _ := syslog.New(syslog.LOG_INFO|syslog.LOG_DAEMON, "snmp_agentx")
+	warnWriter, _ := syslog.New(syslog.LOG_WARNING|syslog.LOG_DAEMON, "snmp_agentx")
+	errorWriter, _ := syslog.New(syslog.LOG_ERR|syslog.LOG_DAEMON, "snmp_agentx")
 
-	debugLogger = log.New(sysLogger, "", log.Lmsgprefix)
-	infoLogger = log.New(sysLogger, "", log.Lmsgprefix)
-	warnLogger = log.New(sysLogger, "", log.Lmsgprefix)
-	errorLogger = log.New(sysLogger, "", log.Lmsgprefix)
+	debugLogger = log.New(debugWriter, "", log.Lmsgprefix)
+	infoLogger = log.New(infoWriter, "", log.Lmsgprefix)
+	warnLogger = log.New(warnWriter, "", log.Lmsgprefix)
+	errorLogger = log.New(errorWriter, "", log.Lmsgprefix)
 }
 
 // Debug 级别日志

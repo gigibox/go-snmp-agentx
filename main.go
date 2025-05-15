@@ -14,7 +14,7 @@ import (
 const retryInterval = 30
 
 var socket, trapServer, community string
-var trapPort, trapInterval int
+var trapPort, trapInterval, checkInterval int
 
 func init() {
 	flag.StringVar(&socket, "socket", "/var/run/agentx.sock", "snmpd agentx socket path")
@@ -22,6 +22,7 @@ func init() {
 	flag.StringVar(&community, "community", "public", "snmp community")
 	flag.IntVar(&trapPort, "trapPort", 162, "trap server port")
 	flag.IntVar(&trapInterval, "trapInterval", 600, "trap interval in seconds")
+	flag.IntVar(&checkInterval, "checkInterval", 60, "check interval in seconds")
 }
 
 func main() {

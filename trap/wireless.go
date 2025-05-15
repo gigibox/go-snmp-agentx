@@ -35,6 +35,7 @@ func (w *WirelessModule) Check() ([]gosnmp.SnmpPDU, error) {
 
 	output := out.String()
 	if strings.Contains(output, "Interface") {
+		logWrite(logger.DebugLevel, oids.TrapWiFiHardwareFailure, "30103 WIFI模组硬件正常.")
 		return nil, nil
 	}
 
@@ -44,5 +45,6 @@ func (w *WirelessModule) Check() ([]gosnmp.SnmpPDU, error) {
 		Type:  gosnmp.OctetString,
 	})
 
+	logWrite(logger.ErrorLevel, oids.TrapWiFiHardwareFailure, "30103 WIFI模组硬件故障,请更换硬件!")
 	return pdu, nil
 }

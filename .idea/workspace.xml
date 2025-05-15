@@ -6,9 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="beb2c434-1629-4b9f-8c4c-4e6af4d2fd56" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logger/logger.go" beforeDir="false" afterPath="$PROJECT_DIR$/logger/logger.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trap/cpuMonitor.go" beforeDir="false" afterPath="$PROJECT_DIR$/trap/cpuMonitor.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trap/disk.go" beforeDir="false" afterPath="$PROJECT_DIR$/trap/disk.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trap/smsDevice.go" beforeDir="false" afterPath="$PROJECT_DIR$/trap/smsDevice.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trap/task.go" beforeDir="false" afterPath="$PROJECT_DIR$/trap/task.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trap/wireless.go" beforeDir="false" afterPath="$PROJECT_DIR$/trap/wireless.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
