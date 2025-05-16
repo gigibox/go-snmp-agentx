@@ -28,12 +28,11 @@ func init() {
 func main() {
 	flag.Parse()
 
-	logger.Info("snmp agentx service start.")
+	logger.Debug("snmp agentx service start.")
 
 	if trapServer != "" {
 		trap.Init(trapServer, community, trapPort)
 		go trap.SystemMonitorLoop(checkInterval, trapInterval)
-		logger.Info("trap server: %s, port: %d, community:%s, interval: %d", trapServer, trapPort, community, trapInterval)
 	}
 
 	var client = new(agentx.Client)
@@ -46,7 +45,6 @@ func main() {
 			continue
 		}
 
-		logger.Info("snmpd connection successful.")
 		break
 	}
 
