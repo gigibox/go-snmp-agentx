@@ -2,7 +2,6 @@ package sysinfo
 
 import (
 	"fmt"
-	"log"
 
 	"github.com/shirou/gopsutil/mem"
 
@@ -16,7 +15,8 @@ func MemoryStat() interface{} {
 	// 获取内存信息
 	vmStat, err := mem.VirtualMemory()
 	if err != nil {
-		log.Fatal(err)
+		fmt.Println(err.Error())
+		return nil
 	}
 
 	result["total"] = formatSize(vmStat.Total)

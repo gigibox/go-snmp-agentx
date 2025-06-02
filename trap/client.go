@@ -1,7 +1,7 @@
 package trap
 
 import (
-	"log"
+	"fmt"
 	"time"
 
 	"github.com/gosnmp/gosnmp"
@@ -37,7 +37,8 @@ func Send(pdus []gosnmp.SnmpPDU) {
 	// 连接到SNMP代理
 	err := snmp.Connect()
 	if err != nil {
-		log.Fatalf("连接失败: %s", err.Error())
+		fmt.Printf("连接失败: %s", err.Error())
+		return
 	}
 	defer snmp.Conn.Close()
 
@@ -48,7 +49,7 @@ func Send(pdus []gosnmp.SnmpPDU) {
 
 	_, err = snmp.SendTrap(trap)
 	if err != nil {
-		log.Fatalf("发送Trap失败: %s", err.Error())
+		fmt.Printf("发送Trap失败: %s", err.Error())
 	}
 }
 
@@ -65,7 +66,8 @@ func SendMap(msgMap map[string]string) {
 	// 连接到SNMP代理
 	err := snmp.Connect()
 	if err != nil {
-		log.Fatalf("连接失败: %v", err)
+		fmt.Printf("连接失败: %v", err)
+		return
 	}
 	defer snmp.Conn.Close()
 
@@ -87,6 +89,6 @@ func SendMap(msgMap map[string]string) {
 
 	_, err = snmp.SendTrap(trap)
 	if err != nil {
-		log.Fatalf("发送Trap失败: %s", err.Error())
+		fmt.Printf("发送Trap失败: %s", err.Error())
 	}
 }
