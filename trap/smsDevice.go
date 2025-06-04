@@ -23,15 +23,30 @@ func (s *SMSDeviceMonitorModule) Name() string {
 	return "SMSDeviceMonitorModule"
 }
 
+func (s *SMSDeviceMonitorModule) Clean() {
+	s.Device = ""
+	s.ChipTemp = 0
+	s.Modem = ""
+	s.Signal = 0
+	s.RSRP = 0
+}
+
 func (s *SMSDeviceMonitorModule) Check() ([]gosnmp.SnmpPDU, error) {
 	var pdu = make([]gosnmp.SnmpPDU, 0)
-
+	fmt.Println("SMSDeviceMonitorModule Check")
 	cmd := exec.Command("sh", "/usr/share/3ginfo-lite/modeminfo.sh")
+
 	output, _ := cmd.CombinedOutput()
+
+	s.Clean()
+
 	err := json.Unmarshal(output, s)
 	if err != nil {
 		s.Device = ""
+		fmt.Println("unmarshal modem info error.", err.Error())
 	}
+
+	fmt.Printf("SMSDeviceMonitorModule info %+v\n", s)
 
 	if s.Device == "" {
 		pdu = append(pdu, gosnmp.SnmpPDU{

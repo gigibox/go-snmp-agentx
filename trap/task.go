@@ -1,6 +1,7 @@
 package trap
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/gosnmp/gosnmp"
@@ -59,9 +60,11 @@ func SystemMonitorLoop(checkInterval, trapInterval int) {
 }
 
 func logWrite(level int, oid, msg string) {
+	fmt.Println(level, oid, msg)
 	if level == logger.DebugLevel {
 		if _, ok := IdsInTrapCache[oid]; ok {
 			logger.Debug(msg)
+			fmt.Println("delete cache ", oid)
 			delete(IdsInTrapCache, oid)
 		}
 
@@ -69,6 +72,7 @@ func logWrite(level int, oid, msg string) {
 	}
 
 	if _, found := IdsTrapCache.Get(oid); found {
+		fmt.Println("oid found in cache.", oid)
 		return
 	}
 
