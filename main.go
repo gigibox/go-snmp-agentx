@@ -13,7 +13,7 @@ import (
 
 const retryInterval = 30
 
-var socket, trapServer, community string
+var socket, trapServer, community, version string
 var trapPort, trapInterval, checkInterval int
 
 func init() {
@@ -23,6 +23,7 @@ func init() {
 	flag.IntVar(&trapPort, "trapPort", 162, "trap server port")
 	flag.IntVar(&trapInterval, "trapInterval", 600, "trap interval in seconds")
 	flag.IntVar(&checkInterval, "checkInterval", 60, "check interval in seconds")
+	flag.StringVar(&version, "v", "1.6.4", "version")
 }
 
 func main() {
