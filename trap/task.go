@@ -11,7 +11,7 @@ import (
 )
 
 var IdsTrapCache *cache.Cache
-var IdsInTrapCache = make(map[string]bool)
+var IdsLogDebugCache = make(map[string]bool)
 
 func SystemMonitorLoop(checkInterval, trapInterval int) {
 	if checkInterval == 0 {
@@ -37,7 +37,7 @@ func SystemMonitorLoop(checkInterval, trapInterval int) {
 		}
 
 		for _, pdu := range pduList {
-			IdsInTrapCache[pdu.Name] = true
+			IdsLogDebugCache[pdu.Name] = true
 
 			if pdu.Value == nil {
 				continue
@@ -62,10 +62,11 @@ func SystemMonitorLoop(checkInterval, trapInterval int) {
 func logWrite(level int, oid, msg string) {
 	fmt.Println(level, oid, msg)
 	if level == logger.DebugLevel {
-		if _, ok := IdsInTrapCache[oid]; ok {
+		if _, ok := IdsLogDebugCache[oid]; ok {
 			logger.Debug(msg)
 			fmt.Println("delete cache ", oid)
-			delete(IdsInTrapCache, oid)
+			delete(IdsLogDebugCache, oid)
+			IdsTrapCache.Delete(oid)
 		}
 
 		return
