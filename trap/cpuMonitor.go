@@ -34,7 +34,7 @@ func (c *CpuMonitorModule) Check() ([]gosnmp.SnmpPDU, error) {
 					Name:  oids.TrapCpuHighTemp,
 					Type:  gosnmp.OctetString,
 				})
-				logWrite(logger.ErrorLevel, oids.TrapCpuHighTemp, fmt.Sprintf("50101 当前CPU温度过高,,将导致性能下降.当前温度: %f ℃", sensor.Temperature))
+				logWrite(logger.ErrorLevel, oids.TrapCpuHighTemp, fmt.Sprintf("50101 当前CPU温度过高,,将导致性能下降.当前温度: %.2f ℃", sensor.Temperature))
 
 			} else if sensor.Temperature <= 18 {
 				pdu = append(pdu, gosnmp.SnmpPDU{
@@ -43,10 +43,10 @@ func (c *CpuMonitorModule) Check() ([]gosnmp.SnmpPDU, error) {
 					Type:  gosnmp.OctetString,
 				})
 
-				logWrite(logger.ErrorLevel, oids.TrapCpuLowTemp, fmt.Sprintf("50102 当前CPU温度过低,,将导致性能下降.当前温度: %f ℃", sensor.Temperature))
+				logWrite(logger.ErrorLevel, oids.TrapCpuLowTemp, fmt.Sprintf("50102 当前CPU温度过低,,将导致性能下降.当前温度: %.2f ℃", sensor.Temperature))
 			} else {
-				logWrite(logger.DebugLevel, oids.TrapCpuHighTemp, fmt.Sprintf("50101 当前CPU温度正常,当前温度: %f ℃", sensor.Temperature))
-				logWrite(logger.DebugLevel, oids.TrapCpuLowTemp, fmt.Sprintf("50102 当前CPU温度正常,当前温度: %f ℃", sensor.Temperature))
+				logWrite(logger.DebugLevel, oids.TrapCpuHighTemp, fmt.Sprintf("50101 当前CPU温度正常,当前温度: %.2f ℃", sensor.Temperature))
+				logWrite(logger.DebugLevel, oids.TrapCpuLowTemp, fmt.Sprintf("50102 当前CPU温度正常,当前温度: %.2f ℃", sensor.Temperature))
 			}
 		}
 	}

@@ -28,7 +28,10 @@ func (s *SMSDeviceMonitorModule) Check() ([]gosnmp.SnmpPDU, error) {
 
 	cmd := exec.Command("sh", "/usr/share/3ginfo-lite/modeminfo.sh")
 	output, _ := cmd.CombinedOutput()
-	_ = json.Unmarshal(output, s)
+	err := json.Unmarshal(output, s)
+	if err != nil {
+		s.Device = ""
+	}
 
 	if s.Device == "" {
 		pdu = append(pdu, gosnmp.SnmpPDU{
@@ -55,7 +58,7 @@ func (s *SMSDeviceMonitorModule) Check() ([]gosnmp.SnmpPDU, error) {
 
 		if s.RSRP < -95 {
 			pdu = append(pdu, gosnmp.SnmpPDU{
-				Value: fmt.Sprintf(`{"id":40101, "msg": "5G Signal too weak. rsrp %f dBm"}`, s.RSRP),
+				Value: fmt.Sprintf(`{"id":40101, "msg": "5G Signal too weak. rsrp %.2f dBm"}`, s.RSRP),
 				Name:  oids.Trap5GSignalTooWeak,
 				Type:  gosnmp.OctetString,
 			})
@@ -67,23 +70,23 @@ func (s *SMSDeviceMonitorModule) Check() ([]gosnmp.SnmpPDU, error) {
 
 		if s.ChipTemp >= 75 {
 			pdu = append(pdu, gosnmp.SnmpPDU{
-				Value: fmt.Sprintf(`{"id":50103, "msg": "5G module temperature too high. %f ℃"}`, s.ChipTemp),
+				Value: fmt.Sprintf(`{"id":50103, "msg": "5G module temperature too high. %.2f ℃"}`, s.ChipTemp),
 				Name:  oids.Trap5GHighTemp,
 				Type:  0,
 			})
 
-			logWrite(logger.ErrorLevel, oids.Trap5GHighTemp, fmt.Sprintf("50103 当前5G通信模块温度过高,将导致通信性能下降.当前温度: %f ℃", s.ChipTemp))
+			logWrite(logger.ErrorLevel, oids.Trap5GHighTemp, fmt.Sprintf("50103 当前5G通信模块温度过高,将导致通信性能下降.当前温度: %.2f ℃", s.ChipTemp))
 		} else if s.ChipTemp <= 35 {
 			pdu = append(pdu, gosnmp.SnmpPDU{
-				Value: fmt.Sprintf(`{"id":50104, "msg": "5G module temperature too low. %f ℃"}`, s.ChipTemp),
+				Value: fmt.Sprintf(`{"id":50104, "msg": "5G module temperature too low. %.2f ℃"}`, s.ChipTemp),
 				Name:  oids.Trap5GLowTemp,
 				Type:  0,
 			})
 
-			logWrite(logger.ErrorLevel, oids.Trap5GLowTemp, fmt.Sprintf("50104 当前5G通信模块温度过低,将导致通信性能下降.当前温度: %f ℃", s.ChipTemp))
+			logWrite(logger.ErrorLevel, oids.Trap5GLowTemp, fmt.Sprintf("50104 当前5G通信模块温度过低,将导致通信性能下降.当前温度: %.2f ℃", s.ChipTemp))
 		} else {
-			logWrite(logger.DebugLevel, oids.Trap5GHighTemp, fmt.Sprintf("50103 5G模组温度恢复正常.当前温度: %f ℃", s.ChipTemp))
-			logWrite(logger.DebugLevel, oids.Trap5GLowTemp, fmt.Sprintf("50104 5G模组温度恢复正常.当前温度: %f ℃", s.ChipTemp))
+			logWrite(logger.DebugLevel, oids.Trap5GHighTemp, fmt.Sprintf("50103 5G模组温度恢复正常.当前温度: %.2f ℃", s.ChipTemp))
+			logWrite(logger.DebugLevel, oids.Trap5GLowTemp, fmt.Sprintf("50104 5G模组温度恢复正常.当前温度: %.2f ℃", s.ChipTemp))
 		}
 	}
 

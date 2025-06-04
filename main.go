@@ -2,6 +2,8 @@ package main
 
 import (
 	"flag"
+	"fmt"
+	"os"
 	"time"
 
 	"go-snmp-agentx/agentx"
@@ -11,24 +13,30 @@ import (
 	"go-snmp-agentx/trap"
 )
 
-const retryInterval = 30
+const (
+	retryInterval = 30
+	Version = "1.6.4"
+)
 
-var socket, trapServer, community, version string
+var socket, trapServer, community string
 var trapPort, trapInterval, checkInterval int
-
 func init() {
 	flag.StringVar(&socket, "socket", "/var/run/agentx.sock", "snmpd agentx socket path")
-	flag.StringVar(&trapServer, "trapServer", "", "trap server ip")
+	flag.StringVar(&trapServer, "trapServer", "1.1.1.1", "trap server ip")
 	flag.StringVar(&community, "community", "public", "snmp community")
 	flag.IntVar(&trapPort, "trapPort", 162, "trap server port")
 	flag.IntVar(&trapInterval, "trapInterval", 600, "trap interval in seconds")
 	flag.IntVar(&checkInterval, "checkInterval", 60, "check interval in seconds")
-	flag.StringVar(&version, "v", "1.6.4", "version")
 }
 
 func main() {
-	flag.Parse()
+	showVersion := flag.Bool("v", false, "Print version info and exit")
 
+	flag.Parse()
+	if *showVersion {
+		fmt.Printf("Version:   %s\n", Version)
+		os.Exit(0)
+	}
 	logger.Debug("snmp agentx service start.")
 
 	if trapServer != "" {
