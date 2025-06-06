@@ -33,6 +33,10 @@ func (s *SMSDeviceMonitorModule) Clean() {
 
 func (s *SMSDeviceMonitorModule) Check() ([]gosnmp.SnmpPDU, error) {
 	var pdu = make([]gosnmp.SnmpPDU, 0)
+	if _, err := exec.LookPath("/usr/share/3ginfo-lite/modeminfo.sh"); err != nil {
+		return pdu, nil
+	}
+
 	fmt.Println("SMSDeviceMonitorModule Check")
 	cmd := exec.Command("sh", "/usr/share/3ginfo-lite/modeminfo.sh")
 
