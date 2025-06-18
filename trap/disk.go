@@ -27,7 +27,7 @@ func (d *DiskModule) Check() ([]gosnmp.SnmpPDU, error) {
 
 	if usage.UsedPercent >= 90 {
 		pdu = append(pdu, gosnmp.SnmpPDU{
-			Value: fmt.Sprintf(`{"id":40103, "msg": "Disk usage is too high, current usage is %.2f%%"}`, usage.UsedPercent),
+			Value: PackageTrapMessage(40103,"一般", fmt.Sprintf("存储容量不足,请及时清理.当前使用率: %.2f%%", usage.UsedPercent)),
 			Name:  oids.TrapLowStorageSpace,
 			Type:  gosnmp.OctetString,
 		})

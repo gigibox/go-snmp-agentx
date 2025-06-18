@@ -54,5 +54,10 @@ func InitOidHandler() *agentx.ListHandler {
 	item.Type = pdu.VariableTypeOctetString
 	item.Value = sysinfo.WirelessStat
 
+	// 设备状态
+	item = lh.Add(StaDeviceStatus)
+	item.Type = pdu.VariableTypeOctetString
+	item.Value = sysinfo.GetDeviceStatus
+
 	return lh
 }

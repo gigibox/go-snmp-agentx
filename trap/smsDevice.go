@@ -54,7 +54,7 @@ func (s *SMSDeviceMonitorModule) Check() ([]gosnmp.SnmpPDU, error) {
 
 	if s.Device == "" {
 		pdu = append(pdu, gosnmp.SnmpPDU{
-			Value: `{"id":30102, "msg": "5G module not found"}`,
+			Value: PackageTrapMessage(30102,"严重", fmt.Sprintf("5G模组不在位,请重新安装!")),
 			Name:  oids.Trap5GNotPresent,
 			Type:  gosnmp.OctetString,
 		})
@@ -64,7 +64,7 @@ func (s *SMSDeviceMonitorModule) Check() ([]gosnmp.SnmpPDU, error) {
 
 		if s.Modem == "" {
 			pdu = append(pdu, gosnmp.SnmpPDU{
-				Value: `{"id":30101, "msg": "5G module hardware failure"}`,
+				Value: PackageTrapMessage(30101,"严重", fmt.Sprintf("5G模组硬件故障,请更换硬件!")),
 				Name:  oids.Trap5GHardwareFailure,
 				Type:  gosnmp.OctetString,
 			})
@@ -77,7 +77,7 @@ func (s *SMSDeviceMonitorModule) Check() ([]gosnmp.SnmpPDU, error) {
 
 		if s.RSRP < -95 {
 			pdu = append(pdu, gosnmp.SnmpPDU{
-				Value: fmt.Sprintf(`{"id":40101, "msg": "5G Signal too weak. rsrp %.2f dBm"}`, s.RSRP),
+				Value: PackageTrapMessage(40101,"一般", fmt.Sprintf("当前5G信号过低,请检查天线,信号强度: %f dBm", s.RSRP)),
 				Name:  oids.Trap5GSignalTooWeak,
 				Type:  gosnmp.OctetString,
 			})
@@ -89,7 +89,7 @@ func (s *SMSDeviceMonitorModule) Check() ([]gosnmp.SnmpPDU, error) {
 
 		if s.ChipTemp >= 75 {
 			pdu = append(pdu, gosnmp.SnmpPDU{
-				Value: fmt.Sprintf(`{"id":50103, "msg": "5G module temperature too high. %.2f ℃"}`, s.ChipTemp),
+				Value: PackageTrapMessage(50103,"严重", fmt.Sprintf("当前5G通信模块温度过高,将导致通信性能下降.当前温度: %.2f ℃", s.ChipTemp)),
 				Name:  oids.Trap5GHighTemp,
 				Type:  0,
 			})
@@ -97,7 +97,7 @@ func (s *SMSDeviceMonitorModule) Check() ([]gosnmp.SnmpPDU, error) {
 			logWrite(logger.ErrorLevel, oids.Trap5GHighTemp, fmt.Sprintf("50103 当前5G通信模块温度过高,将导致通信性能下降.当前温度: %.2f ℃", s.ChipTemp))
 		} else if s.ChipTemp <= 35 {
 			pdu = append(pdu, gosnmp.SnmpPDU{
-				Value: fmt.Sprintf(`{"id":50104, "msg": "5G module temperature too low. %.2f ℃"}`, s.ChipTemp),
+				Value: PackageTrapMessage(50104,"严重", fmt.Sprintf("当前5G通信模块温度过低,将导致通信性能下降.当前温度: %.2f ℃", s.ChipTemp)),
 				Name:  oids.Trap5GLowTemp,
 				Type:  0,
 			})

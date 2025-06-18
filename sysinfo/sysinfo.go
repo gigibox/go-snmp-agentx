@@ -48,3 +48,9 @@ func GetSysUpTime() interface{} {
 
 	return util.Map2JSON(sysTime)
 }
+
+func GetDeviceStatus() interface{} {
+	var devStatus = make(map[string]interface{})
+	devStatus["status"] = util.DeviceStatus
+	return util.Map2JSON(devStatus)
+}

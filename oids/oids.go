@@ -2,15 +2,16 @@ package oids
 
 const (
 	StatOidGroup            = "1.3.6.1.4.1.5688.0"
-	StatSystemInfo          = "1.3.6.1.4.1.5688.0.1" // 系统描述，涵盖设备厂商、型号、软件版本等信息
-	StatSystemUptime        = "1.3.6.1.4.1.5688.0.2" // 系统正常运行时间，即设备自上次启动后的运行时长
-	Stat5GSignal            = "1.3.6.1.4.1.5688.0.3" // 5G 信号强度，反映设备接收到的 5G 信号强弱
-	StatNetworkConnection   = "1.3.6.1.4.1.5688.0.4" // 网络连接状态，如已连接、断开连接等
-	StatTrafficStatistics   = "1.3.6.1.4.1.5688.0.5" // 数据流量统计，统计设备的上下行数据流量
-	StatCpuLoad             = "1.3.6.1.4.1.5688.0.6" // CPU 使用率
-	StatSensorsTemperatures = "1.3.6.1.4.1.5688.0.7" // CPU/传感器温度
-	StatMemoryUsage         = "1.3.6.1.4.1.5688.0.8" // 内存使用率
-	StatWirelessStatus      = "1.3.6.1.4.1.5688.0.9" // 无线网络状态
+	StatSystemInfo          = "1.3.6.1.4.1.5688.0.1"  // 系统描述，涵盖设备厂商、型号、软件版本等信息
+	StatSystemUptime        = "1.3.6.1.4.1.5688.0.2"  // 系统正常运行时间，即设备自上次启动后的运行时长
+	Stat5GSignal            = "1.3.6.1.4.1.5688.0.3"  // 5G 信号强度，反映设备接收到的 5G 信号强弱
+	StatNetworkConnection   = "1.3.6.1.4.1.5688.0.4"  // 网络连接状态，如已连接、断开连接等
+	StatTrafficStatistics   = "1.3.6.1.4.1.5688.0.5"  // 数据流量统计，统计设备的上下行数据流量
+	StatCpuLoad             = "1.3.6.1.4.1.5688.0.6"  // CPU 使用率
+	StatSensorsTemperatures = "1.3.6.1.4.1.5688.0.7"  // CPU/传感器温度
+	StatMemoryUsage         = "1.3.6.1.4.1.5688.0.8"  // 内存使用率
+	StatWirelessStatus      = "1.3.6.1.4.1.5688.0.9"  // 无线网络状态
+	StaDeviceStatus         = "1.3.6.1.4.1.5688.0.10" //   系统状态
 
 	// Trap OIDs
 	TrampExampleMessage        = "1.3.7.1.2.1.1.0.0"  // 测试程序

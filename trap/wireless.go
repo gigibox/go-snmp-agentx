@@ -2,6 +2,7 @@ package trap
 
 import (
 	"bytes"
+	"fmt"
 	"os/exec"
 	"strings"
 
@@ -40,7 +41,7 @@ func (w *WirelessModule) Check() ([]gosnmp.SnmpPDU, error) {
 	}
 
 	pdu = append(pdu, gosnmp.SnmpPDU{
-		Value: `{"id":30103, "msg": "Wireless device not found"}`,
+		Value: PackageTrapMessage(30103,"严重", fmt.Sprintf("WIFI模组硬件故障,请更换硬件!")),
 		Name:  oids.TrapWiFiHardwareFailure,
 		Type:  gosnmp.OctetString,
 	})

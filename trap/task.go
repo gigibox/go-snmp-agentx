@@ -2,6 +2,7 @@ package trap
 
 import (
 	"fmt"
+	"go-snmp-agentx/util"
 	"time"
 
 	"github.com/gosnmp/gosnmp"
@@ -17,6 +18,8 @@ func SystemMonitorLoop(checkInterval, trapInterval int) {
 	if checkInterval == 0 {
 		checkInterval = 60
 	}
+
+	util.DeviceSN, _ = util.GetBrLanMAC()
 
 	IdsTrapCache = cache.New(time.Duration(trapInterval)*time.Second, 5*time.Minute)
 
@@ -51,8 +54,10 @@ func SystemMonitorLoop(checkInterval, trapInterval int) {
 			sendList = append(sendList, pdu)
 		}
 
+		util.DeviceStatus = "normal"
 		if len(sendList) > 0 {
 			Send(sendList)
+			util.DeviceStatus = "alarm"
 		}
 
 		time.Sleep(time.Duration(checkInterval) * time.Second)
