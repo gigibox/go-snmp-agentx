@@ -15,7 +15,7 @@ import (
 
 const (
 	retryInterval = 30
-	Version       = "1.7.0"
+	Version       = "v1.7.0"
 )
 
 var socket, trapServer, community string
