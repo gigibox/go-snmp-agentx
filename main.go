@@ -15,11 +15,12 @@ import (
 
 const (
 	retryInterval = 30
-	Version = "1.6.6"
+	Version       = "1.7.0"
 )
 
 var socket, trapServer, community string
 var trapPort, trapInterval, checkInterval int
+
 func init() {
 	flag.StringVar(&socket, "socket", "/var/run/agentx.sock", "snmpd agentx socket path")
 	flag.StringVar(&trapServer, "trapServer", "1.1.1.1", "trap server ip")
