@@ -11,7 +11,7 @@ const (
 	StatSensorsTemperatures = "1.3.6.1.4.1.5688.0.7"  // CPU/传感器温度
 	StatMemoryUsage         = "1.3.6.1.4.1.5688.0.8"  // 内存使用率
 	StatWirelessStatus      = "1.3.6.1.4.1.5688.0.9"  // 无线网络状态
-	StaDeviceStatus         = "1.3.6.1.4.1.5688.0.10" //   系统状态
+	StaDeviceStatus         = "1.3.6.1.4.1.5688.0.10" // 系统状态
 
 	// Trap OIDs
 	TrampExampleMessage        = "1.3.7.1.2.1.1.0.0"  // 测试程序
