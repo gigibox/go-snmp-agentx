@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="beb2c434-1629-4b9f-8c4c-4e6af4d2fd56" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/oids/oids.go" beforeDir="false" afterPath="$PROJECT_DIR$/oids/oids.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trap/message.go" beforeDir="false" afterPath="$PROJECT_DIR$/trap/message.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trap/task.go" beforeDir="false" afterPath="$PROJECT_DIR$/trap/task.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +23,7 @@
       </list>
     </option>
   </component>
-  <component name="GOROOT" url="file://D:/Go" />
+  <component name="GOROOT" url="file://D:/golang/pkg/mod/golang.org/toolchain@v0.0.1-go1.23.9.windows-amd64" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -43,36 +45,46 @@
     <option name="selectedIndex" value="1" />
     <option name="showPreview" value="true" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 4
+}]]></component>
   <component name="ProjectId" id="2uqOOW7raVUWh6N9dGZgBVnuFfW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="DefaultGoTemplateProperty" value="Go File" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="go.import.settings.migrated" value="true" />
-    <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$" />
-    <property name="settings.editor.selected.configurable" value="watcher.settings" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "git-widget-placeholder": "master",
+    "go.import.settings.migrated": "true",
+    "go.sdk.automatically.set": "true",
+    "last_opened_file_path": "C:/Users/Administrator",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm"
+  }
+}]]></component>
   <component name="RunManager">
     <configuration name="go build go-snmp-agentx" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
       <module name="go-snmp-agentx" />
       <working_directory value="$PROJECT_DIR$" />
       <go_parameters value="-i" />
       <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/../go-snmp-agentx|$PROJECT_DIR$/main.go" />
       <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/../go-snmp-agentx|$PROJECT_DIR$/main.go" />
       <method v="2" />
     </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-gosdk-5df93f7ad4aa-df9ad98b711f-org.jetbrains.plugins.go.sharedIndexes.bundled-GO-242.22855.106" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-GO-242.22855.106" />
+        <option value="bundled-gosdk-5df93f7ad4aa-df9ad98b711f-org.jetbrains.plugins.go.sharedIndexes.bundled-GO-242.26775.26" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-GO-242.26775.26" />
       </set>
     </attachedChunks>
   </component>
@@ -81,6 +93,6 @@
     <option name="version" value="3" />
   </component>
   <component name="VgoProject">
-    <integration-enabled>true</integration-enabled>
+    <settings-migrated>true</settings-migrated>
   </component>
 </project>

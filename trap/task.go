@@ -2,8 +2,10 @@ package trap
 
 import (
 	"fmt"
-	"go-snmp-agentx/util"
 	"time"
+
+	"go-snmp-agentx/oids"
+	"go-snmp-agentx/util"
 
 	"github.com/gosnmp/gosnmp"
 	"github.com/patrickmn/go-cache"
@@ -56,9 +58,16 @@ func SystemMonitorLoop(checkInterval, trapInterval int) {
 
 		util.DeviceStatus = "normal"
 		if len(sendList) > 0 {
-			Send(sendList)
 			util.DeviceStatus = "alarm"
+		} else {
+			sendList = append(sendList, gosnmp.SnmpPDU{
+				Value: PackageTrapMessage(0, "正常", "设备状态正常."),
+				Name:  oids.TrapDeviceStatus,
+				Type:  gosnmp.OctetString,
+			})
 		}
+
+		Send(sendList)
 
 		time.Sleep(time.Duration(checkInterval) * time.Second)
 	}

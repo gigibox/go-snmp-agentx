@@ -15,6 +15,7 @@ const (
 
 	// Trap OIDs
 	TrampExampleMessage        = "1.3.7.1.2.1.1.0.0"  // 测试程序
+	TrapDeviceStatus           = "1.3.7.1.2.1.1.1.1"  // 设备状态
 	Trap5GHardwareFailure      = "1.3.7.1.2.1.1.1.0"  // 5G模组硬件故障
 	Trap5GNotPresent           = "1.3.7.1.2.1.1.2.0"  // 5G模组不在位告警
 	TrapWiFiHardwareFailure    = "1.3.7.1.2.1.1.3.0"  // WIFI模组硬件故障告警
